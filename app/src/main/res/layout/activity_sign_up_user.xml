@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginUserActivity">
+    tools:context=".SignUpUserActivity">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="404dp"
         android:fontFamily="@font/antic"
-        android:text="Войдите в свой аккаунт"
+        android:text="Регистрация"
         android:textColor="@color/black"
         android:textSize="25dp"
         android:textStyle="bold"
@@ -64,15 +64,15 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.184" />
 
     <EditText
-        android:id="@+id/sign_in_email"
+        android:id="@+id/sign_up_username"
         android:layout_width="330dp"
         android:layout_height="60dp"
-        android:hint="Почта или номер телефона"
+        android:hint="Имя пользователя"
         android:textSize="16sp"
-        android:drawableLeft="@drawable/ic_mail"
+        android:drawableLeft="@drawable/ic_user"
         android:drawablePadding="15dp"
         android:paddingLeft="8dp"
         android:elevation="15in"
@@ -86,9 +86,30 @@
         app:layout_constraintVertical_bias="0.435" />
 
     <EditText
-        android:id="@+id/sign_in_password"
+        android:id="@+id/sign_up_email"
         android:layout_width="330dp"
         android:layout_height="60dp"
+        android:background="@drawable/edit_text_bg"
+        android:drawableLeft="@drawable/ic_mail"
+        android:drawablePadding="15dp"
+        android:elevation="15in"
+        android:hint="Почта или номер телефона"
+        android:inputType="textEmailAddress"
+        android:outlineSpotShadowColor="@color/startGreenColor"
+        android:paddingLeft="8dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.548" />
+
+    <EditText
+        android:id="@+id/sign_up_password"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="224dp"
         android:background="@drawable/edit_text_bg"
         android:drawableLeft="@drawable/ic_lock"
         android:drawablePadding="15dp"
@@ -101,61 +122,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_in_email"
-        app:layout_constraintVertical_bias="0.047" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="или"
-        android:fontFamily="@font/antic"
-        android:textSize="13dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_in_password" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="252dp"
-        android:fontFamily="@font/antic"
-        android:text="Продолжить через"
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView9"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.075" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button"
-        android:width="155dp"
-        android:height="60dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:width="155dp"
+        android:height="60dp"
+        android:background="@drawable/btn_shape_lg"
         android:drawableLeft="@drawable/google"
         android:paddingLeft="16dp"
         android:text="Google"
+        android:textAllCaps="false"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:textAllCaps="false"
-        android:background="@drawable/btn_shape_lg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        tools:layout_editor_absoluteY="548dp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="234dp"
+        android:layout_height="56dp"
         android:layout_marginTop="28dp"
         android:width="155dp"
         android:height="60dp"
@@ -165,26 +154,14 @@
         android:outlineAmbientShadowColor="@color/startGreenColor"
         android:outlineSpotShadowColor="@color/startGreenColor"
         android:shadowColor="@color/startGreenColor"
-        android:text="Вход"
+        android:text="Зарегестрироваться"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="22dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
-
-    <TextView
-            android:id="@+id/go_sing_up_user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-
-        android:fontFamily="sans-serif"
-        android:text="Нет аккаунта?"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
