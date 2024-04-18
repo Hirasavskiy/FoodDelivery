@@ -57,7 +57,7 @@
         android:id="@+id/go_user_login_btn"
         android:layout_width="150dp"
         android:layout_height="58dp"
-        android:background="@drawable/green_btn"
+        android:background="@drawable/red_btn"
         android:text="Начать"
         android:textColor="@color/white"
         android:textStyle="bold"
