@@ -12,35 +12,32 @@
         android:theme="@style/Theme.FoodDelivery"
         tools:targetApi="31">
         <activity
-            android:name=".ChooseLocationActivity"
-            android:exported="false" />
-        <activity
             android:name=".LocationActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".SignUpUserActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/title_activity_sign_up_user"
             android:theme="@style/Theme.FoodDelivery" />
         <activity
             android:name=".LoginUserActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".StartActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".SplashActivity"
             android:exported="true">
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

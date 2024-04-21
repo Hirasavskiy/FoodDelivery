@@ -96,7 +96,7 @@
         android:elevation="2in"
         android:hint="Пароль"
         android:inputType="textPassword"
-        android:outlineSpotShadowColor="@color/startGreenColor"
+        android:outlineSpotShadowColor="@color/startRedColor"
         android:paddingLeft="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

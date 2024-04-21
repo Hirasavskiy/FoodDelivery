@@ -51,7 +51,7 @@
         android:layout_marginBottom="40dp"
         android:fontFamily="@font/antic"
         android:text="By Hirasavskiy"
-        android:textColor="@color/startGreenColor"
+        android:textColor="@color/startRedColor"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
