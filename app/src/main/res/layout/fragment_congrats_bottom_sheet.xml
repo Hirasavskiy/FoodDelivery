@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".CongratsBottomSheet">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/gnyrwn971"
+            android:gravity="center"
+            android:text="Ваш заказ успешно оформлен!"
+            android:textAlignment="center"
+            android:textColor="#FE2147"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/n_success" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/back_button"
+            android:layout_width="157dp"
+            android:layout_height="76dp"
+            android:layout_gravity="center"
+            android:textAllCaps="false"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/addtocartshape"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:fontFamily="@font/gnyrwn971"
+            android:text="Вернуться в магазин" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</FrameLayout>

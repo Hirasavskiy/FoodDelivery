@@ -8,6 +8,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.fooddelivery.Fragment.CartFragment
 import com.example.fooddelivery.Fragment.HistoryFragment
 import com.example.fooddelivery.Fragment.HomeFragment
+import com.example.fooddelivery.Fragment.Notificarion_Bottom_Fragment
 import com.example.fooddelivery.Fragment.ProfileFragment
 import com.example.fooddelivery.Fragment.SearchFragment
 import com.example.fooddelivery.databinding.ActivityMainBinding
@@ -46,6 +47,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> false
             }
+        }
+        binding.notificationsButton.setOnClickListener{
+            val bottomSheetDialog = Notificarion_Bottom_Fragment()
+            bottomSheetDialog.show(supportFragmentManager, "Test")
         }
     }
 

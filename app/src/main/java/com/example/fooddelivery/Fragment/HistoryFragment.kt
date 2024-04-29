@@ -5,27 +5,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fooddelivery.R
+import com.example.fooddelivery.adapter.BuyAgainAdapter
+import com.example.fooddelivery.databinding.FragmentHistoryBinding
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HistoryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HistoryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-
+    private lateinit var binding: FragmentHistoryBinding
+    private lateinit var buyAgainAdapter: BuyAgainAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history, container, false)
+        binding = FragmentHistoryBinding.inflate(layoutInflater, container, false)
+        setUpRecyclerView()
+        return binding.root
     }
-
+    private fun setUpRecyclerView(){
+        val buyAgainFoodName = arrayListOf("Палочки", "Пельмени", "Мороженое")
+        val buyAgainFoodPrice = arrayListOf("2.00 р.", "3.50 р.", "2.50 р.")
+        val buyAgainFoodImage = arrayListOf(R.drawable.palochki, R.drawable.pelmenisochnye, R.drawable.toparbuz)
+        buyAgainAdapter = BuyAgainAdapter(buyAgainFoodName, buyAgainFoodPrice, buyAgainFoodImage)
+        binding.BuyAgainRecyclerView.adapter = buyAgainAdapter
+        binding.BuyAgainRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+    }
     companion object {
 
 

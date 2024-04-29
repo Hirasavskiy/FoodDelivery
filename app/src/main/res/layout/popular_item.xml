@@ -46,13 +46,13 @@
 
             <TextView
                 android:id="@+id/addToCartPopular"
-                android:layout_width="60dp"
-                android:layout_height="20dp"
+                android:layout_width="80dp"
+                android:layout_height="25dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/addtocartshape"
                 android:fontFamily="@font/clearsansregular"
-                android:gravity="center_horizontal"
-                android:text="Купить"
+                android:gravity="center|center_horizontal"
+                android:text="В корзину"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/pricePopular"
@@ -62,16 +62,21 @@
 
             <TextView
                 android:id="@+id/pricePopular"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="208dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
                 android:text="5$"
                 android:textColor="#8A0000"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/imageView6"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.422"
+                app:layout_constraintStart_toEndOf="@+id/foodNamePopular"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.173" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
