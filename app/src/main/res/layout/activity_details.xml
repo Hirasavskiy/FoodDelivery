@@ -46,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/detailFoodName">
 
         <ImageView
-            android:id="@+id/DetailFoodImage"
+            android:id="@+id/detailFoodImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="fitCenter"
@@ -67,10 +67,9 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView4" />
 
     <TextView
-        android:id="@+id/DescriptionText"
+        android:id="@+id/descriptionText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/clearsansregular"
@@ -89,10 +88,10 @@
         android:text="Состав"
         android:textColor="@color/black"
         android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="@+id/DescriptionText"
+        app:layout_constraintEnd_toEndOf="@+id/descriptionText"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/DescriptionText"
-        app:layout_constraintTop_toBottomOf="@+id/DescriptionText" />
+        app:layout_constraintStart_toStartOf="@+id/descriptionText"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionText" />
 
     <TextView
         android:id="@+id/ingridientsText"
@@ -103,8 +102,8 @@
         android:text="TextView"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView24"
         app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
     <androidx.appcompat.widget.AppCompatButton

@@ -22,7 +22,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/menuImage"
+                android:id="@+id/productImage"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:layout_marginStart="8dp"
@@ -35,7 +35,7 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/menuFoodName"
+                android:id="@+id/productFoodName"
                 android:layout_width="137dp"
                 android:layout_height="53dp"
                 android:layout_marginStart="16dp"
@@ -43,12 +43,12 @@
                 android:text="FoodName"
                 android:textColor="@color/black"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/menuImage"
-                app:layout_constraintStart_toEndOf="@+id/menuImage"
-                app:layout_constraintTop_toTopOf="@+id/menuImage" />
+                app:layout_constraintBottom_toBottomOf="@+id/productImage"
+                app:layout_constraintStart_toEndOf="@+id/productImage"
+                app:layout_constraintTop_toTopOf="@+id/productImage" />
 
             <TextView
-                android:id="@+id/menuAddToCart"
+                android:id="@+id/productAddToCart"
                 android:layout_width="80dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="12dp"
@@ -60,13 +60,13 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/menuPrice"
+                app:layout_constraintEnd_toEndOf="@+id/productPrice"
                 app:layout_constraintHorizontal_bias="0.513"
-                app:layout_constraintStart_toStartOf="@+id/menuPrice"
-                app:layout_constraintTop_toBottomOf="@+id/menuPrice" />
+                app:layout_constraintStart_toStartOf="@+id/productPrice"
+                app:layout_constraintTop_toBottomOf="@+id/productPrice" />
 
             <TextView
-                android:id="@+id/menuPrice"
+                android:id="@+id/productPrice"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -78,7 +78,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.509"
-                app:layout_constraintStart_toEndOf="@+id/menuFoodName"
+                app:layout_constraintStart_toEndOf="@+id/productFoodName"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.177" />
         </androidx.constraintlayout.widget.ConstraintLayout>

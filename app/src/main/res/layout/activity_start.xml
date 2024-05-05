@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.141"
-        app:srcCompat="@drawable/burgerr" />
+        app:srcCompat="@drawable/logo_new2" />
 
     <TextView
         android:id="@+id/textView4"
