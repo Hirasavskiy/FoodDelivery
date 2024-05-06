@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <ImageButton
-            android:id="@+id/button5"
+            android:id="@+id/backBtn"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginStart="16dp"
@@ -37,7 +37,7 @@
             android:textSize="28sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button5" />
+            app:layout_constraintTop_toBottomOf="@+id/backBtn" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,12 +62,12 @@
                 android:textSize="20sp" />
 
             <EditText
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="text"
-                android:text="Name" />
+                android:inputType="text" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -92,14 +92,14 @@
                 android:textSize="20sp" />
 
             <EditText
+                android:id="@+id/adress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textMultiLine"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="Здесь должены быть ваш адрес, например: г. Брест, ул. Московская, д. 267" />
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textMultiLine" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -124,12 +124,12 @@
                 android:textSize="20sp" />
 
             <EditText
+                android:id="@+id/phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="phone"
-                android:text="375(XX)XXXXXXX" />
+                android:inputType="phone" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -183,6 +183,7 @@
                 android:textSize="20sp" />
 
             <EditText
+                android:id="@+id/totalAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -191,7 +192,6 @@
                 android:gravity="end"
                 android:inputType="none"
                 android:paddingEnd="32dp"
-                android:text="5 р."
                 android:textColor="@color/startRedColor"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -201,14 +201,14 @@
         android:id="@+id/PlaceOrder"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_marginBottom="32dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
-        android:text="Оформить заказ"
         android:layout_gravity="bottom"
-        android:textColor="@color/white"
-        android:textAllCaps="false"
-        android:textSize="24dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/startRedColor"
         android:fontFamily="@font/clearsansregular"
-        android:background="@color/startRedColor"/>
+        android:text="Оформить заказ"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="24dp" />
 </FrameLayout>

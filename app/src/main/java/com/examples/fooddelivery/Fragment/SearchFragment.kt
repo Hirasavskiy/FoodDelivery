@@ -14,13 +14,6 @@ import android.widget.SearchView
 class SearchFragment : Fragment() {
     private lateinit var binding: FragmentSearchBinding
     private lateinit var adapter : MenuAdapter
-    private val orignalMenuFoodName = listOf("Крабовые палочки", "Мороженое", "Пельмени")
-    private val originalMenuItemPrice = listOf("2 р.", "2.50 р.", "3.20 р.")
-    private val originalMenuImage = listOf(
-        R.drawable.palochki,
-        R.drawable.toparbuz,
-        R.drawable.pelmenisochnye
-    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,9 +42,9 @@ class SearchFragment : Fragment() {
         filteredProductName.clear()
         filteredProductPrice.clear()
         filteredProductImage.clear()
-        filteredProductName.addAll(orignalMenuFoodName)
-        filteredProductPrice.addAll(originalMenuItemPrice)
-        filteredProductImage.addAll(originalMenuImage)
+        //filteredProductName.addAll(orignalMenuFoodName)
+        //filteredProductPrice.addAll(originalMenuItemPrice)
+        //filteredProductImage.addAll(originalMenuImage)
 
         adapter.notifyDataSetChanged()
     }
@@ -76,13 +69,13 @@ class SearchFragment : Fragment() {
         filteredProductPrice.clear()
         filteredProductImage.clear()
 
-        orignalMenuFoodName.forEachIndexed { index, foodName ->
-            if (foodName.contains(query.toString(), ignoreCase = true)){
-                filteredProductName.add(foodName)
-                filteredProductPrice.add(originalMenuItemPrice[index])
-                filteredProductImage.add(originalMenuImage[index])
-            }
-        }
+//        orignalMenuFoodName.forEachIndexed { index, foodName ->
+//            if (foodName.contains(query.toString(), ignoreCase = true)){
+//                filteredProductName.add(foodName)
+//                filteredProductPrice.add(originalMenuItemPrice[index])
+//                filteredProductImage.add(originalMenuImage[index])
+//            }
+//        }
         adapter.notifyDataSetChanged()
     }
     companion object {
