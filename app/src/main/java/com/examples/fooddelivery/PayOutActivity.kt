@@ -1,8 +1,10 @@
 package com.examples.fooddelivery
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.examples.fooddelivery.databinding.ActivityPayOutBinding
+import com.examples.fooddelivery.model.OrderDetails
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -15,7 +17,7 @@ class PayOutActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var name: String
-    private lateinit var adress: String
+    private lateinit var address: String
     private lateinit var phone: String
     private lateinit var totalAmount: String
     private lateinit var foodItemName: ArrayList<String>
@@ -52,9 +54,48 @@ class PayOutActivity : AppCompatActivity() {
         }
 
         binding.PlaceOrder.setOnClickListener {
+
+            name = binding.name.text.toString().trim()
+            address = binding.adress.text.toString().trim()
+            phone = binding.phone.text.toString().trim()
+            if(name.isBlank() && address.isBlank() && phone.isBlank()){
+                Toast.makeText(this, "Пожалуйста, заполните все поля", Toast.LENGTH_SHORT).show()
+            }
+            else{
+                placeOrder()
+            }
+
+        }
+    }
+
+    private fun placeOrder() {
+        userId = auth.currentUser?.uid?:""
+        val time = System.currentTimeMillis()
+        val itemPushKey = databaseReference.child("OrderDetails").push().key
+        val orderDetails = OrderDetails(userId, name, foodItemName, foodItemPrice, foodItemImage, foodItemQuantities, address, totalAmount, phone, time, itemPushKey, false, false)
+        val orderReference = databaseReference.child("OrderDetails").child(itemPushKey!!)
+        orderReference.setValue(orderDetails).addOnSuccessListener {
             val botomSheetDialog = CongratsBottomSheet()
             botomSheetDialog.show(supportFragmentManager, "Test")
+            removeItemFromCart()
+            addOrderToHistory(orderDetails)
         }
+            .addOnFailureListener {
+                Toast.makeText(this, "Ошибка заказа", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun addOrderToHistory(orderDetails: OrderDetails) {
+        databaseReference.child("customer").child(userId).child("BuyHistory")
+            .child(orderDetails.itemPushKey!!)
+            .setValue(orderDetails).addOnSuccessListener{
+
+            }
+    }
+
+    private fun removeItemFromCart() {
+        val cartItemsReference = databaseReference.child("customer").child(userId).child("CartItems")
+        cartItemsReference.removeValue()
     }
 
     private fun calculateTotalAmount(): Int {
@@ -85,7 +126,7 @@ class PayOutActivity : AppCompatActivity() {
 
                     if (snapshot.exists()){
                         val names = snapshot.child("name").getValue(String::class.java)?:""
-                        val addresses = snapshot.child("adress").getValue(String::class.java)?:""
+                        val addresses = snapshot.child("address").getValue(String::class.java)?:""
                         val phones = snapshot.child("phone").getValue(String::class.java)?:""
                         binding.apply {
                             name.setText(names)
