@@ -3,6 +3,7 @@ package com.examples.fooddelivery.Fragment
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.examples.fooddelivery.adapter.BuyAgainAdapter
 import com.examples.fooddelivery.databinding.FragmentHistoryBinding
 import com.examples.fooddelivery.model.OrderDetails
+import com.examples.fooddelivery.RecentOrderItems
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -25,7 +27,12 @@ class HistoryFragment : Fragment() {
     private lateinit var database: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
     private lateinit var userId: String
-    private var listOfOrderItem: MutableList<OrderDetails> = mutableListOf()
+    private var listOfOrderItem: ArrayList<OrderDetails> = arrayListOf()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,6 +44,7 @@ class HistoryFragment : Fragment() {
 
         retrieveBuyHistory()
 
+
         binding.recentBuyItem.setOnClickListener {
             seeItemsRecentBuy()
         }
@@ -45,74 +53,136 @@ class HistoryFragment : Fragment() {
 
     private fun seeItemsRecentBuy() {
         listOfOrderItem.firstOrNull()?.let { recentBuy ->
-            val intent = Intent(requireContext())
+            val intent = Intent(requireContext(), RecentOrderItems::class.java)
+            intent.putExtra("RecentBuyOrderItem", ArrayList(listOfOrderItem))
+            startActivity(intent)
         }
     }
 
     private fun retrieveBuyHistory() {
         binding.recentBuyItem.visibility = View.INVISIBLE
-        userId = auth.currentUser?.uid?:""
+        userId = auth.currentUser?.uid ?: ""
 
-        val buyItemRefernce: DatabaseReference = database.reference.child("customer").child(userId).child("BuyHistory")
-        val shortingQuery = buyItemRefernce.orderByChild("currentTime")
+        val buyItemReference: DatabaseReference =
+            database.reference.child("customer").child(userId).child("BuyHistory")
+        val shortingQuery = buyItemReference.orderByChild("currentTime")
 
-        shortingQuery.addListenerForSingleValueEvent(object : ValueEventListener{
+        shortingQuery.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                for (buySnapshot in snapshot.children){
+                for (buySnapshot in snapshot.children) {
                     val buyHistoryItem = buySnapshot.getValue(OrderDetails::class.java)
                     buyHistoryItem?.let {
-                        listOfOrderItem.add(it)
+                        // Добавляем каждый элемент из заказа в список отдельно
+                        val foodNames = it.foodNames ?: mutableListOf()
+                        val foodPrices = it.foodPrices ?: mutableListOf()
+                        val foodImages = it.foodImages ?: mutableListOf()
+                        val foodQuantities = it.foodQuantities ?: mutableListOf()
+
+                        for (index in foodNames.indices) {
+                            val orderItem = it.userUid?.let { it1 ->
+                                it.userName?.let { it2 ->
+                                    it.address?.let { it3 ->
+                                        it.totalPrice?.let { it4 ->
+                                            it.phoneNumber?.let { it5 ->
+                                                it.orderAccepted?.let { it6 ->
+                                                    it.paymentReceived?.let { it7 ->
+                                                        OrderDetails(
+                                                            it1,
+                                                            it2,
+                                                            ArrayList(mutableListOf(foodNames[index])),
+                                                            ArrayList(mutableListOf(foodPrices[index])),
+                                                            ArrayList(mutableListOf(foodImages[index])),
+                                                            ArrayList(mutableListOf(foodQuantities[index])),
+                                                            it3,
+                                                            it4,
+                                                            it5,
+                                                            it.currentTime,
+                                                            it.itemPushKey,
+                                                            it6,
+                                                            it7
+                                                        )
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            if (orderItem != null) {
+                                listOfOrderItem.add(orderItem)
+                            }
+                        }
                     }
                 }
                 listOfOrderItem.reverse()
-                if (listOfOrderItem.isNotEmpty()){
+                if (listOfOrderItem.isNotEmpty()) {
                     setDataInRecentBuyItem()
                     setPreviousBuyItemsRecyclerView()
                 }
-
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Log.e("HistoryFragment", "Database error: $error")
             }
-
         })
     }
+
 
     private fun setDataInRecentBuyItem() {
         binding.recentBuyItem.visibility = View.VISIBLE
         val recentOrderItem = listOfOrderItem.firstOrNull()
         recentOrderItem?.let {
-            with(binding){
-                buyAgainName.text = it.foodNames?.firstOrNull()?:""
-                buyAgainFoodPrice.text = it.foodPrices?.firstOrNull()?:""
-                val image = it.foodImages?.firstOrNull()?:""
+            with(binding) {
+                buyAgainName.text = it.foodNames?.firstOrNull() ?: ""
+                buyAgainFoodPrice.text = it.foodPrices?.firstOrNull() ?: ""
+                val image = it.foodImages?.firstOrNull() ?: ""
                 val uri = Uri.parse(image)
                 Glide.with(requireContext()).load(uri).into(buyAgainFoodImage)
 
                 listOfOrderItem.reverse()
-                if (listOfOrderItem.isNotEmpty()){
-                    setDataInRecentBuyItem()
-                    setPreviousBuyItemsRecyclerView()
+                if (listOfOrderItem.isNotEmpty()) {
+
                 }
             }
         }
     }
 
     private fun setPreviousBuyItemsRecyclerView() {
-        val buyAgainFoodName = arrayListOf<String>()
-        val buyAgainFoodPrice = arrayListOf<String>()
-        val buyAgainFoodImage = arrayListOf<String>()
-        for (i in 1 until listOfOrderItem.size){
-            listOfOrderItem[i].foodNames?.firstOrNull()?.let { buyAgainFoodName.add(it) }
-            listOfOrderItem[i].foodPrices?.firstOrNull()?.let { buyAgainFoodPrice.add(it) }
-            listOfOrderItem[i].foodImages?.firstOrNull()?.let { buyAgainFoodImage.add(it) }
+        val buyAgainFoodName = mutableListOf<String>()
+        val buyAgainFoodPrice = mutableListOf<String>()
+        val buyAgainFoodImage = mutableListOf<String>()
+
+        // Заполнение списков buyAgainFoodName, buyAgainFoodPrice, buyAgainFoodImage
+        for (orderItem in listOfOrderItem) {
+            orderItem.foodNames?.firstOrNull()?.let {
+                buyAgainFoodName.add(it)
+                orderItem.foodPrices?.firstOrNull()?.let {
+                    buyAgainFoodPrice.add(it)
+                    orderItem.foodImages?.firstOrNull()?.let {
+                        buyAgainFoodImage.add(it)
+                    }
+                }
+            }
         }
+
+        // Создание адаптера и установка его для RecyclerView
         val rv = binding.BuyAgainRecyclerView
         rv.layoutManager = LinearLayoutManager(requireContext())
-        buyAgainAdapter = BuyAgainAdapter(buyAgainFoodName, buyAgainFoodPrice, buyAgainFoodImage, requireContext())
+        buyAgainAdapter = BuyAgainAdapter(
+            buyAgainFoodName,
+            buyAgainFoodPrice,
+            buyAgainFoodImage,
+            requireContext()
+        )
+        Log.d("HistoryFragment", "buyAgainFoodName size: ${buyAgainFoodName.size}")
+        Log.d("HistoryFragment", "buyAgainFoodPrice size: ${buyAgainFoodPrice.size}")
+        Log.d("HistoryFragment", "buyAgainFoodImage size: ${buyAgainFoodImage.size}")
+
         rv.adapter = buyAgainAdapter
 
+        // Уведомление адаптера о том, что данные изменились
+        buyAgainAdapter.notifyDataSetChanged()
     }
+
 
 }

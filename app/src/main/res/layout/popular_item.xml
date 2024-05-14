@@ -20,9 +20,10 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imagePopular"
+                android:id="@+id/foodImage"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
+                android:layout_marginStart="8dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintCircleRadius="2dp"
@@ -32,7 +33,7 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/foodNamePopular"
+                android:id="@+id/foodName"
                 android:layout_width="137dp"
                 android:layout_height="53dp"
                 android:layout_marginStart="16dp"
@@ -40,9 +41,9 @@
                 android:text="FoodName"
                 android:textColor="@color/black"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imagePopular"
-                app:layout_constraintStart_toEndOf="@+id/imagePopular"
-                app:layout_constraintTop_toTopOf="@+id/imagePopular" />
+                app:layout_constraintBottom_toBottomOf="@+id/foodImage"
+                app:layout_constraintStart_toEndOf="@+id/foodImage"
+                app:layout_constraintTop_toTopOf="@+id/foodImage" />
 
             <TextView
                 android:id="@+id/addToCartPopular"
@@ -55,13 +56,13 @@
                 android:text="В корзину"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/pricePopular"
+                app:layout_constraintEnd_toEndOf="@+id/foodPrice"
                 app:layout_constraintHorizontal_bias="0.513"
-                app:layout_constraintStart_toStartOf="@+id/pricePopular"
-                app:layout_constraintTop_toBottomOf="@+id/pricePopular" />
+                app:layout_constraintStart_toStartOf="@+id/foodPrice"
+                app:layout_constraintTop_toBottomOf="@+id/foodPrice" />
 
             <TextView
-                android:id="@+id/pricePopular"
+                android:id="@+id/foodPrice"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -74,7 +75,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.422"
-                app:layout_constraintStart_toEndOf="@+id/foodNamePopular"
+                app:layout_constraintStart_toEndOf="@+id/foodName"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.173" />
         </androidx.constraintlayout.widget.ConstraintLayout>

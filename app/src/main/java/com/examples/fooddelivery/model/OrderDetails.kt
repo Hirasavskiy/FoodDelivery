@@ -2,11 +2,12 @@ package com.examples.fooddelivery.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import java.io.Serializable
 import java.util.ArrayList
 
-class OrderDetails(): Parcelable {
-    var userUid: String ?= null
-    var userName: String ?= null
+class OrderDetails(): Serializable {
+    var userUid: String? = null
+    var userName: String? = null
     var foodNames: MutableList<String> ?= null
     var foodImages: MutableList<String> ?= null
     var foodPrices: MutableList<String> ?= null
@@ -14,8 +15,8 @@ class OrderDetails(): Parcelable {
     var address: String ?= null
     var totalPrice: String ?= null
     var phoneNumber: String ?= null
-    var orderAccepted: Boolean ?= null
-    var paymentReceived: Boolean ?= null
+    var orderAccepted: Boolean = false
+    var paymentReceived: Boolean = false
     var itemPushKey: String ?= null
     var currentTime: Long = 0
 
@@ -25,8 +26,8 @@ class OrderDetails(): Parcelable {
         address = parcel.readString()
         totalPrice = parcel.readString()
         phoneNumber = parcel.readString()
-        orderAccepted = parcel.readValue(Boolean::class.java.classLoader) as? Boolean
-        paymentReceived = parcel.readValue(Boolean::class.java.classLoader) as? Boolean
+        orderAccepted = parcel.readByte() != 0.toByte()
+        paymentReceived = parcel.readByte() != 0.toByte()
         itemPushKey = parcel.readString()
         currentTime = parcel.readLong()
     }
@@ -38,42 +39,42 @@ class OrderDetails(): Parcelable {
         foodItemPrice: ArrayList<String>,
         foodItemImage: ArrayList<String>,
         foodItemQuantities: ArrayList<Int>,
-        adress: String,
+        address: String,
         totalAmount: String,
         phone: String,
         time: Long,
         itemPushKey: String?,
         b: Boolean,
         b1: Boolean
-    ) : this(){
-        this.userUid = userUid
+    ) : this() {
+        this.userUid = userId
         this.userName = name
         this.foodNames = foodItemName
         this.foodPrices = foodItemPrice
         this.foodImages = foodItemImage
         this.foodQuantities = foodItemQuantities
-        this.address = adress
+        this.address = address
         this.totalPrice = totalAmount
         this.phoneNumber = phone
         this.currentTime = time
         this.itemPushKey = itemPushKey
-        this.orderAccepted = orderAccepted
-        this.paymentReceived = paymentReceived
+        this.orderAccepted = b
+        this.paymentReceived = b1
     }
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
+    fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(userUid)
         parcel.writeString(userName)
         parcel.writeString(address)
         parcel.writeString(totalPrice)
         parcel.writeString(phoneNumber)
-        parcel.writeValue(orderAccepted)
-        parcel.writeValue(paymentReceived)
+        parcel.writeByte(if (orderAccepted) 1 else 0)
+        parcel.writeValue(if (paymentReceived) 1 else 0)
         parcel.writeString(itemPushKey)
         parcel.writeLong(currentTime)
     }
 
-    override fun describeContents(): Int {
+    fun describeContents(): Int {
         return 0
     }
 

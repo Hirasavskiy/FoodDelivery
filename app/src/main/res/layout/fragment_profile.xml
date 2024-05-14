@@ -14,6 +14,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <Button
+            android:id="@+id/editButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/startRedColor"
+            android:text="Изменить" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
@@ -43,6 +52,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:ems="10"
+                android:enabled="false"
                 android:fontFamily="@font/clearsansregular"
                 android:inputType="text"
                 android:text="Ваше имя" />
@@ -79,6 +89,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:ems="10"
+                android:enabled="false"
                 android:fontFamily="@font/clearsansregular"
                 android:inputType="textMultiLine"
                 android:text="Здесь должены быть ваш адрес, например: г. Брест, ул. Московская, д. 267" />
@@ -113,6 +124,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:ems="10"
+                android:enabled="false"
                 android:fontFamily="@font/clearsansregular"
                 android:inputType="textEmailAddress"
                 android:text="example@mail.com" />
@@ -147,6 +159,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:ems="10"
+                android:enabled="false"
                 android:fontFamily="@font/clearsansregular"
                 android:inputType="phone"
                 android:text="375(XX)XXXXXXX" />
