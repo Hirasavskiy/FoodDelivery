@@ -1,6 +1,7 @@
 package com.examples.fooddelivery.Fragment
 
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -48,7 +49,17 @@ class HistoryFragment : Fragment() {
         binding.recentBuyItem.setOnClickListener {
             seeItemsRecentBuy()
         }
+
+        binding.receivedButton.setOnClickListener {
+            updateOrderStatus()
+        }
         return binding.root
+    }
+
+    private fun updateOrderStatus() {
+        val itemPushKey = listOfOrderItem[0].itemPushKey
+        val completeOrderReference = database.reference.child("CompleteOrder").child(itemPushKey!!)
+        completeOrderReference.child("paymentRecieved").setValue(true)
     }
 
     private fun seeItemsRecentBuy() {
@@ -139,9 +150,10 @@ class HistoryFragment : Fragment() {
                 val uri = Uri.parse(image)
                 Glide.with(requireContext()).load(uri).into(buyAgainFoodImage)
 
-                listOfOrderItem.reverse()
-                if (listOfOrderItem.isNotEmpty()) {
-
+                val isOrderAccepted = listOfOrderItem[0].orderAccepted
+                if (isOrderAccepted) {
+                    orderStatus.background.setTint(Color.GREEN)
+                    receivedButton.visibility = View.VISIBLE
                 }
             }
         }
