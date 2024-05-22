@@ -11,9 +11,9 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/gnyrwn971"
+        android:fontFamily="@font/vetrino"
         android:text="Выбереите местоположение"
-        android:textSize="40dp"
+        android:textSize="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.529"
@@ -39,7 +39,7 @@
             android:id="@+id/listOfLocation"
             android:inputType="none"
             android:text="Выберите ваше местоположение"
-            android:fontFamily="@font/gnyrwn971"/>
+            android:fontFamily="@font/vetrino"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

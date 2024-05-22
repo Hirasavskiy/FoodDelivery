@@ -4,72 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".StartActivity">
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="338dp"
         android:layout_height="308dp"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.141"
-        app:srcCompat="@drawable/logo_new2" />
+        app:srcCompat="@drawable/logo3" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/clearsansregular"
-        android:text="Лушчая доставка по всей Беларуси"
+        android:layout_width="358dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/vetrino"
+        android:text="Домашняя еда по всей Беларуси"
         android:textAlignment="center"
-        android:textColor="@color/startRedColor"
+        android:textColor="#D7092F"
         android:textSize="32dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.15" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:fontFamily="@font/clearsansregular"
-        android:text="by Hirasavskiy"
-        android:textAlignment="center"
-        android:textColor="@color/startRedColor"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.972" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/go_user_login_btn"
         android:layout_width="150dp"
         android:layout_height="58dp"
+        android:layout_marginTop="128dp"
         android:background="@drawable/red_btn"
+        android:elevation="3dp"
+        android:fontFamily="@font/clearsansregular"
+        android:gravity="center"
+        android:outlineAmbientShadowColor="@color/startRedColor"
+        android:outlineSpotShadowColor="@color/startRedColor"
         android:text="Начать"
         android:textColor="@color/white"
         android:textStyle="bold"
-        android:gravity="center"
-        android:fontFamily="@font/clearsansregular"
-        android:outlineSpotShadowColor="@color/startRedColor"
-        android:outlineAmbientShadowColor="@color/startRedColor"
-        android:elevation="3dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.781" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 </androidx.constraintlayout.widget.ConstraintLayout>

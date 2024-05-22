@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/gnyrwn971"
+            android:fontFamily="@font/vetrino"
             android:text="Изменить"
             android:textColor="@color/startRedColor"
             android:textSize="28sp"
@@ -56,9 +56,10 @@
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/gnyrwn971"
+                android:fontFamily="serif"
                 android:paddingLeft="8dp"
                 android:text="Имя"
+                android:textColor="@color/black"
                 android:textSize="20sp" />
 
             <EditText
@@ -86,9 +87,10 @@
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/gnyrwn971"
+                android:fontFamily="serif"
                 android:paddingLeft="8dp"
                 android:text="Адрес"
+                android:textColor="@color/black"
                 android:textSize="20sp" />
 
             <EditText
@@ -118,9 +120,10 @@
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/gnyrwn971"
+                android:fontFamily="serif"
                 android:paddingLeft="8dp"
                 android:text="Тел."
+                android:textColor="@color/black"
                 android:textSize="20sp" />
 
             <EditText
@@ -148,14 +151,15 @@
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/gnyrwn971"
+                android:fontFamily="serif"
                 android:paddingLeft="8dp"
                 android:text="Оплата"
-                android:textSize="20sp" />
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
             <ImageView
                 android:id="@+id/imageView4"
-                android:layout_width="250dp"
+                android:layout_width="230dp"
                 android:layout_height="70dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/ic_payment" />
@@ -177,10 +181,11 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/gnyrwn971"
+                android:fontFamily="serif"
                 android:paddingLeft="8dp"
                 android:text="Сумма"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/totalAmount"
@@ -206,7 +211,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="32dp"
         android:background="@color/startRedColor"
-        android:fontFamily="@font/clearsansregular"
+        android:fontFamily="serif"
         android:text="Оформить заказ"
         android:textAllCaps="false"
         android:textColor="@color/white"

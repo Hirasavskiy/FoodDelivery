@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_weight="25"
-                android:fontFamily="@font/gnyrwn971"
+                android:fontFamily="@font/vetrino"
                 android:text="Имя"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_weight="25"
-                android:fontFamily="@font/gnyrwn971"
+                android:fontFamily="@font/vetrino"
                 android:text="Адрес"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_weight="25"
-                android:fontFamily="@font/gnyrwn971"
+                android:fontFamily="@font/vetrino"
                 android:text="Email"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
@@ -147,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_weight="25"
-                android:fontFamily="@font/gnyrwn971"
+                android:fontFamily="@font/vetrino"
                 android:text="Тел."
                 android:textColor="@color/black"
                 android:textSize="24sp" />
@@ -175,7 +175,7 @@
             android:layout_marginBottom="32dp"
             android:background="@drawable/proceed_button_shape"
             android:elevation="5dp"
-            android:fontFamily="@font/gnyrwn971"
+            android:fontFamily="@font/vetrino"
             android:text="Сохранить"
             android:textAllCaps="false"
             android:textColor="@color/startRedColor"

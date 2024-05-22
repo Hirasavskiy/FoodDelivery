@@ -21,7 +21,7 @@
         android:layout_marginTop="8dp"
         android:textSize="24sp"
         android:textColor="@color/black"
-        android:fontFamily="@font/gnyrwn971"
+        android:fontFamily="@font/vetrino"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

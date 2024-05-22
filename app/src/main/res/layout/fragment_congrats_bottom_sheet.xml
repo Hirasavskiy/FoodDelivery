@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:fontFamily="@font/gnyrwn971"
+            android:fontFamily="@font/vetrino"
             android:gravity="center"
             android:text="Ваш заказ успешно оформлен!"
             android:textAlignment="center"
@@ -36,13 +36,13 @@
             android:layout_width="157dp"
             android:layout_height="76dp"
             android:layout_gravity="center"
-            android:textAllCaps="false"
             android:layout_marginTop="32dp"
             android:background="@drawable/addtocartshape"
+            android:fontFamily="serif"
+            android:text="Вернуться в магазин"
+            android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="26sp"
-            android:fontFamily="@font/gnyrwn971"
-            android:text="Вернуться в магазин" />
+            android:textSize="26sp" />
     </LinearLayout>
     <View
         android:layout_width="match_parent"
