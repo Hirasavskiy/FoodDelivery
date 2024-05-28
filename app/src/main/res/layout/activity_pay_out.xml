@@ -60,7 +60,7 @@
                 android:paddingLeft="8dp"
                 android:text="Имя"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/name"
@@ -91,7 +91,7 @@
                 android:paddingLeft="8dp"
                 android:text="Адрес"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/adress"
@@ -124,7 +124,7 @@
                 android:paddingLeft="8dp"
                 android:text="Тел."
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/phone"
@@ -155,7 +155,7 @@
                 android:paddingLeft="8dp"
                 android:text="Оплата"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -189,7 +189,7 @@
 
             <EditText
                 android:id="@+id/totalAmount"
-                android:layout_width="wrap_content"
+                android:layout_width="202dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"

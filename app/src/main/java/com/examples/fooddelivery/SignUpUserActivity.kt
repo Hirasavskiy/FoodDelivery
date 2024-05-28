@@ -21,9 +21,9 @@ class SignUpUserActivity : AppCompatActivity() {
     private lateinit var username: String
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
-    private lateinit var googleSignInClient: GoogleSignInAccount
 
     private lateinit var binding: ActivitySignUpUserBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -32,36 +32,39 @@ class SignUpUserActivity : AppCompatActivity() {
         binding = ActivitySignUpUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.goLogUser.setOnClickListener{
-            val intent = Intent(this@SignUpUserActivity, LoginUserActivity :: class.java)
+        binding.goLogUser.setOnClickListener {
+            val intent = Intent(this@SignUpUserActivity, LoginUserActivity::class.java)
             startActivity(intent)
         }
+
         binding.createAccountBtn.setOnClickListener {
             username = binding.signUpUsername.text.toString()
             email = binding.signUpEmail.text.toString().trim()
             password = binding.signUpPassword.text.toString().trim()
 
-            if(email.isEmpty() || username.isEmpty() || password.isEmpty()){
+            if (email.isEmpty() || username.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Заполните все поля", Toast.LENGTH_SHORT).show()
-            }
-            else{
+            } else {
                 createAccount(email, password)
             }
         }
     }
 
     private fun createAccount(email: String, password: String) {
-        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
-            task ->
-            if(task.isSuccessful) {
+        Log.d("Account", "Attempting to create account with email: $email")
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Log.d("Account", "createUserWithEmail: success")
                 Toast.makeText(this, "Аккаунт создан успешно", Toast.LENGTH_SHORT).show()
                 saveUserData()
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
-            }
-            else{
+            } else {
+                Log.w("Account", "createUserWithEmail: failure", task.exception)
                 Toast.makeText(this, "Ошибка создания", Toast.LENGTH_SHORT).show()
-                Log.d("Account", "createAccount: Failure", task.exception)
+                task.exception?.let {
+                    Log.e("AccountError", it.message ?: "Unknown error")
+                }
             }
         }
     }
@@ -71,10 +74,19 @@ class SignUpUserActivity : AppCompatActivity() {
         email = binding.signUpEmail.text.toString().trim()
         password = binding.signUpPassword.text.toString().trim()
 
-
         val user = UserModel(username, email, password)
-        val userId = FirebaseAuth.getInstance().currentUser!!.uid
-        database.child("customer").child(userId).setValue(user)
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
 
+        if (userId != null) {
+            database.child("customer").child(userId).setValue(user)
+                .addOnSuccessListener {
+                    Log.d("Database", "User data saved successfully")
+                }
+                .addOnFailureListener {
+                    Log.e("Database", "Failed to save user data", it)
+                }
+        } else {
+            Log.e("Database", "User ID is null, cannot save user data")
+        }
     }
 }

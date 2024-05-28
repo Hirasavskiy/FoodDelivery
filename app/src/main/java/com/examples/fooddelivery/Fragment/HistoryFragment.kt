@@ -194,6 +194,7 @@ class HistoryFragment : Fragment() {
 
         // Уведомление адаптера о том, что данные изменились
         buyAgainAdapter.notifyDataSetChanged()
+        
     }
 
 

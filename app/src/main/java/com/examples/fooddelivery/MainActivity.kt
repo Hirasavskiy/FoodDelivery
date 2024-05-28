@@ -1,5 +1,6 @@
 package com.examples.fooddelivery
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -55,9 +56,13 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-        binding.notificationsButton.setOnClickListener{
-            val bottomSheetDialog = Notificarion_Bottom_Fragment()
-            bottomSheetDialog.show(supportFragmentManager, "Test")
+        binding.backBtn.setOnClickListener{
+            //val bottomSheetDialog = Notificarion_Bottom_Fragment()
+            //bottomSheetDialog.show(supportFragmentManager, "Test")
+            auth = FirebaseAuth.getInstance()
+            auth.signOut()
+            startActivity(Intent(this, SignUpUserActivity::class.java))
+            finish()
         }
     }
 

@@ -50,9 +50,11 @@ class DetailsActivity : AppCompatActivity() {
         val database = FirebaseDatabase.getInstance().reference
         val userId = auth.currentUser?.uid?:""
 
-        val cartItem = CartItems(foodName.toString(), foodPrice.toString(), foodDescription.toString(), foodImage.toString(), 1)
+        val cartItem = CartItems(foodName.toString(), foodPrice.toString(), foodDescription.toString(),
+            foodImage.toString(), 1)
         //сохранить данные в firebase
-        database.child("customer").child(userId).child("CartItems").push().setValue(cartItem).addOnSuccessListener {
+        database.child("customer").child(userId).child("CartItems").push().setValue(cartItem)
+            .addOnSuccessListener {
             Toast.makeText(this, "Успешно добавленно в корзину", Toast.LENGTH_SHORT).show()
         }.addOnFailureListener{
             Toast.makeText(this, "Ошибка добавления в корзину", Toast.LENGTH_SHORT).show()

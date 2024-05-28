@@ -72,7 +72,8 @@ class PayOutActivity : AppCompatActivity() {
         userId = auth.currentUser?.uid?:""
         val time = System.currentTimeMillis()
         val itemPushKey = databaseReference.child("OrderDetails").push().key
-        val orderDetails = OrderDetails(userId, name, foodItemName, foodItemPrice, foodItemImage, foodItemQuantities, address, totalAmount, phone, time, itemPushKey, false, false)
+        val orderDetails = OrderDetails(userId, name, foodItemName, foodItemPrice, foodItemImage,
+            foodItemQuantities, address, totalAmount, phone, time, itemPushKey, false, true)
         val orderReference = databaseReference.child("OrderDetails").child(itemPushKey!!)
         orderReference.setValue(orderDetails).addOnSuccessListener {
             val botomSheetDialog = CongratsBottomSheet()
