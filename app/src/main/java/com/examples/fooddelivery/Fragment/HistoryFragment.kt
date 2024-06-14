@@ -196,6 +196,4 @@ class HistoryFragment : Fragment() {
         buyAgainAdapter.notifyDataSetChanged()
         
     }
-
-
 }

@@ -1,0 +1,351 @@
+@startuml
+class com.examples.fooddelivery.SignUpUserActivity {
+- String email
+- String password
+- String username
+- FirebaseAuth auth
+- DatabaseReference database
+- ActivitySignUpUserBinding binding
++ void onCreate(Bundle?)
+- void createAccount(String,String)
+- void saveUserData()
+}
+
+
+class com.examples.fooddelivery.model.ProductItem {
+}
+class com.examples.fooddelivery.model.CartItems {
+}
+class com.examples.fooddelivery.adapter.MenuAdapter {
+}
+class com.examples.fooddelivery.adapter.MenuViewHolder {
+- void openDetailsActivity(Int)
++ void bind(Int)
+}
+
+class com.examples.fooddelivery.SplashActivity {
++ void onCreate(Bundle?)
+}
+
+class com.examples.fooddelivery.adapter.BuyAgainAdapter {
+}
+class com.examples.fooddelivery.adapter.BuyAgainViewHolder {
++ void bind(String,String,String)
+}
+
+class com.examples.fooddelivery.adapter.RecentBuyAdapter {
+}
+class com.examples.fooddelivery.adapter.RecentViewHolder {
++ void bind(Int)
+}
+
+class com.examples.fooddelivery.DetailsActivity {
+- ActivityDetailsBinding binding
+- String? foodName
+- String? foodImage
+- String? foodDescription
+- String? foodIngredients
+- String? foodPrice
+- FirebaseAuth auth
++ void onCreate(Bundle?)
+- void addItemToCart()
+}
+
+
+class com.examples.fooddelivery.LocationActivity {
+- ActivityLocationBinding binding
++ void onCreate(Bundle?)
+}
+
+
+class com.examples.fooddelivery.model.UserModel {
+}
+class com.examples.fooddelivery.PayOutActivity {
++ ActivityPayOutBinding binding
+- FirebaseAuth auth
+- String name
+- String address
+- String phone
+- String totalAmount
+- ArrayList<String> foodItemName
+- ArrayList<String> foodItemPrice
+- ArrayList<String> foodItemImage
+- ArrayList<String> foodItemDescription
+- ArrayList<String> foodItemIngredient
+- ArrayList<Int> foodItemQuantities
+- DatabaseReference databaseReference
+- String userId
++ void onCreate(Bundle?)
+- void placeOrder()
+- void addOrderToHistory(OrderDetails)
+- void removeItemFromCart()
+- Int calculateTotalAmount()
+- void setUserData()
+}
+
+
+class com.examples.fooddelivery.MainActivity {
+- FirebaseAuth auth
+- String email
+- String password
+- String userName
+- String nameOfShop
+- DatabaseReference database
+- ActivityMainBinding binding
++ void onCreate(Bundle?)
++ void changefragment(Fragment)
+}
+
+
+class com.examples.fooddelivery.model.OrderDetails$CREATOR {
++ OrderDetails createFromParcel(Parcel)
++ Array<OrderDetails?> newArray(Int)
+}
+
+class com.examples.fooddelivery.model.OrderDetails {
++ String? userUid
++ String? userName
++ MutableList<String> ? foodNames
++ MutableList<String> ? foodImages
++ MutableList<String> ? foodPrices
++ MutableList<Int> ? foodQuantities
++ String ? address
++ String ? totalPrice
++ String ? phoneNumber
++ Boolean orderAccepted
++ Boolean paymentReceived
++ String ? itemPushKey
++ Long currentTime
++ void null()
++ void writeToParcel(Parcel,Int)
++ Int describeContents()
+}
+
+
+class com.examples.fooddelivery.Fragment.HistoryFragment {
+- FragmentHistoryBinding binding
+- BuyAgainAdapter buyAgainAdapter
+- FirebaseDatabase database
+- FirebaseAuth auth
+- String userId
+- ArrayList<OrderDetails> listOfOrderItem
++ void onCreate(Bundle?)
++ void onCreateView(void,LayoutInflater,ViewGroup?,void,Bundle?)
++ void null()
+- void updateOrderStatus()
+- void seeItemsRecentBuy()
+- void retrieveBuyHistory()
+- void setDataInRecentBuyItem()
+- void setPreviousBuyItemsRecyclerView()
+}
+
+
+class com.examples.fooddelivery.Fragment.HomeFragment {
+- FragmentHomeBinding binding
+- FirebaseDatabase database
+- MutableList<ProductItem> productItems
++ void onCreateView(void,LayoutInflater,ViewGroup?,void,Bundle?)
++ void null()
+- void retrieveAndDisplayPopularItems()
+- void randomPopularItems()
+- void setPopularItemsAdapter(List<ProductItem>)
++ void onViewCreated(View,Bundle?)
+}
+
+
+class com.examples.fooddelivery.Fragment.SearchFragment$Companion {
+}
+class com.examples.fooddelivery.Fragment.SearchFragment {
+- FragmentSearchBinding binding
+- MenuAdapter adapter
+- FirebaseDatabase database
+-  originalProductItems
++ void onCreate(Bundle?)
++ void onCreateView(void,LayoutInflater,ViewGroup?,void,Bundle?)
++ void null()
+- void retrieveMenuItem()
+- void showAllMenu()
+- void setAdapter(List<ProductItem>)
+- void setupSearchView()
+- void filterProductItems(String)
+}
+
+
+class com.examples.fooddelivery.Fragment.Notificarion_Bottom_Fragment$Companion {
+}
+class com.examples.fooddelivery.Fragment.Notificarion_Bottom_Fragment {
+- FragmentNotificarionBottomBinding binding
++ void onCreate(Bundle?)
++ View? onCreateView(LayoutInflater,ViewGroup?,Bundle?)
+}
+
+
+class com.examples.fooddelivery.CongratsBottomSheet$Companion {
+}
+class com.examples.fooddelivery.CongratsBottomSheet {
+- FragmentCongratsBottomSheetBinding binding
++ void onCreate(Bundle?)
++ View? onCreateView(LayoutInflater,ViewGroup?,Bundle?)
+}
+
+
+class com.examples.fooddelivery.adapter.PopularAdapter$PopularViewHolder {
+-  imagesView
++ void bind(String,String,Int)
+}
+
+
+class com.examples.fooddelivery.adapter.PopularAdapter {
++ PopularViewHolder onCreateViewHolder(ViewGroup,Int)
++ void onBindViewHolder(PopularViewHolder,Int)
++ Int getItemCount()
+}
+
+class com.examples.fooddelivery.StartActivity {
+- ActivityStartBinding binding
++ void onCreate(Bundle?)
+}
+
+
+class com.examples.fooddelivery.Fragment.ProfileFragment {
+- FragmentProfileBinding binding
+-  auth
+-  database
++ void onCreate(Bundle?)
++ View? onCreateView(LayoutInflater,ViewGroup?,void,Bundle?)
+- void updateUserData(String,String,String,String)
+- void setUserData()
+}
+
+
+class com.examples.fooddelivery.LoginUserActivity {
+- String ? userName
+- String email
+- String password
+- FirebaseAuth auth
+- FirebaseDatabase database
++ void onCreate(Bundle?)
+- void createUser()
++ void onStart()
+- void updateUi(FirebaseUser?)
+}
+
+
+class com.examples.fooddelivery.Fragment.CartFragment$Companion {
+}
+class com.examples.fooddelivery.Fragment.CartFragment {
+- FragmentCartBinding binding
+- FirebaseAuth auth
+- FirebaseDatabase database
+- MutableList<String> foodNames
+- MutableList<String> foodPrices
+- MutableList<String> foodDescriptions
+- MutableList<String> foodImagesUri
+- MutableList<String> foodIngredients
+- MutableList<Int> quantity
+- CartAdapter cartAdapter
+- String userId
++ void onCreate(Bundle?)
++ void onCreateView(void,LayoutInflater,ViewGroup?,void,Bundle?)
++ void null()
+- void getOrderItemsDetail()
+- void orderNow(void,MutableList<String>,void,MutableList<String>,void,MutableList<String>,void,MutableList<String>,void,MutableList<String>,void,MutableList<Int>)
++ void null()
+- void retrieveCartItems()
+}
+
+
+class com.examples.fooddelivery.Fragment.MenuBotomSheetFragment$Companion {
+}
+class com.examples.fooddelivery.Fragment.MenuBotomSheetFragment {
+- FragmentMenuBotomSheetBinding binding
+- FirebaseDatabase database
+- MutableList<ProductItem> productItems
++ void onCreate(Bundle?)
++ View? onCreateView(LayoutInflater,ViewGroup?,Bundle?)
+- void retrieveProductItems()
+- void setAdapter()
+}
+
+
+class com.examples.fooddelivery.RecentOrderItems {
+- ActivityRecentOrderItemsBinding binding
+- ArrayList<String> allFoodNames
+- ArrayList<String> allFoodImages
+- ArrayList<String> allFoodPrices
+- ArrayList<Int> allFoodQuantities
++ void onCreate(Bundle?)
+- void setAdapter()
+}
+
+
+class com.examples.fooddelivery.adapter.CartAdapter {
+}
+class com.examples.fooddelivery.adapter.null {
+- IntArray itemQuantities
+- DatabaseReference cartItemsReference
+}
+
+class com.examples.fooddelivery.adapter.CartViewHolder {
++ void bind(Int)
+- void decreaseQuantity(Int)
+- void increaseQuantity(Int)
+- void deleteItem(Int)
+}
+
+class com.examples.fooddelivery.adapter.null {
++ void onDataChange(DataSnapshot)
++ void onCancelled(DatabaseError)
+}
+
+class com.examples.fooddelivery.adapter.NotificationAdapter$NotificationViewHolder {
++ void bind(Int)
+}
+
+class com.examples.fooddelivery.adapter.NotificationAdapter {
++ NotificationViewHolder onCreateViewHolder(ViewGroup,Int)
++ void onBindViewHolder(NotificationViewHolder,Int)
++ Int getItemCount()
+}
+
+
+
+androidx.appcompat.app.AppCompatActivity <|-- com.examples.fooddelivery.SignUpUserActivity
+com.examples.fooddelivery.adapter.ViewHolder <|-- com.examples.fooddelivery.adapter.MenuViewHolder
+androidx.appcompat.app.AppCompatActivity <|-- com.examples.fooddelivery.SplashActivity
+com.examples.fooddelivery.adapter. <|.. com.examples.fooddelivery.adapter.BuyAgainAdapter
+com.examples.fooddelivery.adapter.ViewHolder <|-- com.examples.fooddelivery.adapter.BuyAgainViewHolder
+com.examples.fooddelivery.adapter.ViewHolder <|-- com.examples.fooddelivery.adapter.RecentViewHolder
+androidx.appcompat.app.AppCompatActivity <|-- com.examples.fooddelivery.DetailsActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.examples.fooddelivery.LocationActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.examples.fooddelivery.PayOutActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.examples.fooddelivery.MainActivity
+com.examples.fooddelivery.model.OrderDetails +.. com.examples.fooddelivery.model.OrderDetails$CREATOR
+com.examples.fooddelivery.model.Creator <|.. com.examples.fooddelivery.model.OrderDetails$CREATOR
+java.io.Serializable <|.. com.examples.fooddelivery.model.OrderDetails
+androidx.fragment.app.Fragment <|-- com.examples.fooddelivery.Fragment.HistoryFragment
+androidx.fragment.app.Fragment <|-- com.examples.fooddelivery.Fragment.HomeFragment
+com.examples.fooddelivery.Fragment.SearchFragment +.. com.examples.fooddelivery.Fragment.SearchFragment$Companion
+androidx.fragment.app.Fragment <|-- com.examples.fooddelivery.Fragment.SearchFragment
+com.examples.fooddelivery.Fragment.Notificarion_Bottom_Fragment +.. com.examples.fooddelivery.Fragment.Notificarion_Bottom_Fragment$Companion
+com.google.android.material.bottomsheet.BottomSheetDialogFragment <|-- com.examples.fooddelivery.Fragment.Notificarion_Bottom_Fragment
+com.examples.fooddelivery.CongratsBottomSheet +.. com.examples.fooddelivery.CongratsBottomSheet$Companion
+com.google.android.material.bottomsheet.BottomSheetDialogFragment <|-- com.examples.fooddelivery.CongratsBottomSheet
+com.examples.fooddelivery.adapter.PopularAdapter +.. com.examples.fooddelivery.adapter.PopularAdapter$PopularViewHolder
+com.examples.fooddelivery.adapter.ViewHolder <|-- com.examples.fooddelivery.adapter.PopularAdapter$PopularViewHolder
+com.examples.fooddelivery.adapter.Adapter <|-- com.examples.fooddelivery.adapter.PopularAdapter
+androidx.appcompat.app.AppCompatActivity <|-- com.examples.fooddelivery.StartActivity
+androidx.fragment.app.Fragment <|-- com.examples.fooddelivery.Fragment.ProfileFragment
+androidx.appcompat.app.AppCompatActivity <|-- com.examples.fooddelivery.LoginUserActivity
+com.examples.fooddelivery.Fragment.CartFragment +.. com.examples.fooddelivery.Fragment.CartFragment$Companion
+androidx.fragment.app.Fragment <|-- com.examples.fooddelivery.Fragment.CartFragment
+com.examples.fooddelivery.Fragment.MenuBotomSheetFragment +.. com.examples.fooddelivery.Fragment.MenuBotomSheetFragment$Companion
+com.google.android.material.bottomsheet.BottomSheetDialogFragment <|-- com.examples.fooddelivery.Fragment.MenuBotomSheetFragment
+androidx.appcompat.app.AppCompatActivity <|-- com.examples.fooddelivery.RecentOrderItems
+com.examples.fooddelivery.adapter. <|.. com.examples.fooddelivery.adapter.CartAdapter
+com.examples.fooddelivery.adapter.ViewHolder <|-- com.examples.fooddelivery.adapter.CartViewHolder
+com.examples.fooddelivery.adapter.ValueEventListener <|.. com.examples.fooddelivery.adapter.null
+com.examples.fooddelivery.adapter.NotificationAdapter +.. com.examples.fooddelivery.adapter.NotificationAdapter$NotificationViewHolder
+com.examples.fooddelivery.adapter.ViewHolder <|-- com.examples.fooddelivery.adapter.NotificationAdapter$NotificationViewHolder
+com.examples.fooddelivery.adapter.Adapter <|-- com.examples.fooddelivery.adapter.NotificationAdapter
+@enduml

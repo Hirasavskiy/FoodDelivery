@@ -148,7 +148,6 @@ class CartFragment : Fragment() {
 
         })
     }
-
     companion object {
 
     }
